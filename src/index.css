@@ -1,0 +1,178 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Based on TailwindCSS recommendations,
+  consider using classes instead of the `@apply` directive
+  @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
+*/
+* {
+  @apply box-border m-0 p-0;
+  font-family: "Poppins", sans-serif;
+}
+
+body,
+html {
+  @apply h-screen w-full;
+}
+.action-container {
+  @apply w-[90%] flex items-center justify-between relative mx-auto my-5;
+}
+.action-container .filter,
+.action-container .delete-all {
+  @apply text-base cursor-pointer bg-[rgb(41,28,41)] text-white shadow-[0px_8px_15px_rgba(0,0,0,0.1)] transition-all duration-[0.3s] ease-[ease] delay-[0s] px-5 py-[15px] rounded-[10px] border-[none];
+  outline: none;
+}
+.action-container .filter:hover {
+  @apply bg-[rgb(61,48,61)] shadow-[0px_15px_20px_rgba(46,229,157,0.4)] translate-y-[-7px];
+}
+.filter:hover .dropdown-container {
+  @apply block;
+}
+.dropdown-container {
+  @apply absolute bg-[#f9f9f9] min-w-[160px] shadow-[0px_8px_16px_0px_rgba(0,0,0,0.2)] z-[1] top-full;
+}
+.dropdown-container a {
+  @apply float-none text-[black] no-underline block text-left px-4 py-3 hover:bg-[#ddd];
+}
+.show-dropdown {
+  @apply block;
+}
+.action-container .delete-all {
+  @apply bg-[rgb(182,103,182)] hover:bg-[rgb(202,123,202)] hover:shadow-[0px_15px_20px_rgba(46,229,157,0.4)] hover:translate-y-[-7px];
+}
+.tasks-container {
+  @apply grow overflow-y-auto;
+  /* Hide scrollbar for IE, Edge and Firefox */
+  /* IE and Edge */
+  /* Firefox */
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.tasks-container ::-webkit-scrollbar {
+  @apply hidden;
+}
+.tasks-container {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+table {
+  @apply w-[90%] shadow-[0_8px_32px_0_rgba(31,38,135,0.3)] border-spacing-0 mx-auto my-5 rounded-[10px];
+}
+table tr {
+  @apply h-[50px] border-b-[#ddd] border-b border-solid;
+}
+table tr th {
+  @apply text-left font-medium text-[0.9rem] p-2.5 first:rounded-tl-[10px] last:rounded-tr-[10px];
+  background: rgb(200, 199, 225);
+}
+table tr td {
+  @apply text-left text-base text-[#2a2727] overflow-hidden p-2.5 text-left last:flex last:items-center last:justify-between last:gap-x-[5px];
+}
+table tr th:nth-child(1) {
+  @apply w-6/12;
+}
+table tr th:nth-child(2) {
+  @apply w-1/5;
+}
+table tr th:nth-child(3) {
+  @apply w-[15%];
+}
+table tr th:nth-child(4) {
+  @apply w-1/5;
+}
+.task-row-completed td:nth-child(1) {
+  @apply line-through text-[#999];
+}
+.task-row td:nth-child(1) {
+  text-wrap: wrap;
+}
+.task-row td:nth-child(2) {
+  text-wrap: nowrap;
+}
+.task-row td:nth-child(3) {
+  text-wrap: nowrap;
+}
+table .edit-btn {
+  @apply bg-[rgb(211,226,82)] text-white h-10 w-10 text-base cursor-pointer rounded-[5px] border-[none] hover:bg-[rgb(191,206,62)] hover:shadow-[0px_15px_20px_rgba(46,229,157,0.4)] hover:translate-y-[-7px];
+  outline: none;
+}
+table .edit-btn i {
+  @apply text-[1.2rem] text-[black];
+}
+table .done-btn {
+  @apply bg-[rgb(88,206,137)] text-white h-10 w-10 text-base cursor-pointer rounded-[10px] border-[none] hover:bg-[rgb(68,186,117)] hover:shadow-[0px_15px_20px_rgba(46,229,157,0.4)] hover:translate-y-[-7px];
+  outline: none;
+}
+table .done-btn i {
+  @apply text-[1.8rem] text-[black];
+}
+table .remove-btn {
+  @apply bg-[rgb(250,133,133)] text-white h-10 w-10 text-base cursor-pointer rounded-[10px] border-[none] hover:bg-[rgb(230,113,113)] hover:shadow-[0px_15px_20px_rgba(46,229,157,0.4)] hover:translate-y-[-7px];
+  outline: none;
+}
+table .edit-btn,
+table .done-btn,
+table .remove-btn {
+  @apply shadow-[0px_8px_15px_rgba(0,0,0,0.1)] transition-all duration-[0.3s] ease-[ease] delay-[0s];
+}
+table .remove-btn i {
+  @apply text-[1.2rem] text-[black];
+}
+main {
+  @apply h-4/5 w-3/5 shadow-[0_8px_32px_0_rgba(31,38,135,0.3)] flex flex-col mx-auto my-5 rounded-[20px];
+}
+main h1 {
+  @apply relative text-center p-5 before:content-[""] before:absolute before:w-full before:h-full before:bg-[rgb(182,103,182)] before:shadow-[0px_10px_15px_rgba(0,0,0,0.1)] before:z-[-1] before:rounded-[20px_20px_0_0] before:left-0 before:top-0;
+}
+main h1 span {
+  @apply inline-block text-[2.5rem] text-white transition-transform duration-[0.3s] ease-[ease] hover:scale-105 hover:scale-105;
+  font-family: "Arial", sans-serif;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* editor design */
+.tasks-editor {
+  @apply fixed -translate-x-2/4 w-fit h-[50px] flex items-center justify-center bg-transparent left-2/4 bottom-2.5;
+}
+.tasks-editor input {
+  @apply w-fit h-full text-base shadow-[0_8px_32px_0_rgba(31,38,135,0.3)] mr-2.5 p-2.5 rounded-[10px] border-2 border-solid border-[rgb(182,103,182)] focus:border-2 focus:border-solid focus:border-[rgb(182,103,182)];
+  outline: none;
+}
+.tasks-editor input:nth-child(1) {
+  @apply w-[400px];
+}
+.tasks-editor button {
+  @apply w-[50px] h-[50px] bg-[rgb(182,103,182)] text-white text-base cursor-pointer flex items-center justify-center rounded-[10px] border-[none];
+  outline: none;
+}
+.tasks-editor button box-icon {
+  @apply w-[70%] h-[70%] flex;
+}
+.overlay {
+  @apply absolute h-full w-full bg-[rgba(0,0,0,0.5)] z-[2] top-0;
+}
+
+.edit-modal {
+  @apply fixed -translate-x-2/4 gap-2 -translate-y-2/4 w-[600px] h-fit bg-white z-[3] p-5 rounded-[10px] left-2/4 top-2/4;
+}
+.activate-edit-modal {
+  @apply flex justify-around items-center;
+}
+.edit-modal input {
+  @apply h-10 text-base shadow-[0_8px_32px_0_rgba(31,38,135,0.3)] p-2.5 rounded-[10px] border-2 border-solid border-[rgb(182,103,182)] focus:border-2 focus:border-solid focus:border-[rgb(182,103,182)];
+  outline: none;
+}
+.edit-modal .edit-task-name {
+  @apply w-3/5;
+}
+.edit-modal .edit-task-date {
+  @apply w-3/12;
+}
+.edit-modal button {
+  @apply w-10 h-10 bg-[rgb(182,103,182)] text-white text-base cursor-pointer flex items-center justify-center transition-all duration-[0.3s] ease-[ease] delay-[0s] rounded-[10px] border-[none] hover:bg-[rgb(202,123,202)] hover:shadow-[0px_15px_20px_rgba(46,229,157,0.4)] hover:translate-y-[-7px];
+  outline: none;
+}
+.edit-modal button box-icon {
+  @apply w-[70%] h-[70%] flex;
+}
